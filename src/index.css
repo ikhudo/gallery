@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply min-h-screen bg-gradient-to-b from-cream-200 via-cream-400 to-cream-500;
+  }
+}
+
+@layer components {
+  .frame {
+    @apply border border-warm-500 p-2 bg-white;
+  }
+
+  .frame img {
+    @apply w-full block border border-cream-300;
+  }
+}
