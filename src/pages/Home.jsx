@@ -6,7 +6,7 @@ const Home = () => {
         <div
           className="w-36 h-36 lg:w-44 lg:h-44 rounded-full border-2 border-warm-400 bg-cover bg-center shadow-[inset_0_0_0_8px_rgba(255,255,255,0.6)]"
           style={{
-            backgroundImage: 'url("/artist.png")',
+            backgroundImage: 'url("/artist.webp")',
           }}
           role="img"
           aria-label="Artist portrait"
@@ -31,7 +31,7 @@ const Home = () => {
           <article className="bg-cream-50/20 border border-warm-300 p-5">
             <div className="frame group">
               <img
-                src="/gallery/interiors/interior-1.png"
+                src="/gallery/interiors/interior-1.webp"
                 alt="Interior I"
                 className="saturate-[0.3] group-hover:saturate-100 transition-[filter] duration-300"
               />
@@ -43,7 +43,7 @@ const Home = () => {
           <article className="bg-cream-50/20 border border-warm-300 p-5">
             <div className="frame group">
               <img
-                src="/gallery/interiors/interior-2.png"
+                src="/gallery/interiors/interior-2.webp"
                 alt="Interior II"
                 className="saturate-[0.3] group-hover:saturate-100 transition-[filter] duration-300"
               />

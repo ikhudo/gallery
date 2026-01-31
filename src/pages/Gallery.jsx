@@ -4,47 +4,47 @@ const galleryItems = [
   // Interiors
   {
     title: "Interior I",
-    image: "/gallery/interiors/interior-1.png",
+    image: "/gallery/interiors/interior-1.webp",
     category: "interiors",
   },
   {
     title: "Interior II",
-    image: "/gallery/interiors/interior-2.png",
+    image: "/gallery/interiors/interior-2.webp",
     category: "interiors",
   },
   {
     title: "Interior III",
-    image: "/gallery/interiors/interior-3.png",
+    image: "/gallery/interiors/interior-3.webp",
     category: "interiors",
   },
   {
     title: "Interior IV",
-    image: "/gallery/interiors/interior-4.png",
+    image: "/gallery/interiors/interior-4.webp",
     category: "interiors",
   },
   {
     title: "Interior V",
-    image: "/gallery/interiors/interior-5.png",
+    image: "/gallery/interiors/interior-5.webp",
     category: "interiors",
   },
   {
     title: "Interior VI",
-    image: "/gallery/interiors/interior-6.png",
+    image: "/gallery/interiors/interior-6.webp",
     category: "interiors",
   },
   {
     title: "Interior VII",
-    image: "/gallery/interiors/interior-7.png",
+    image: "/gallery/interiors/interior-7.webp",
     category: "interiors",
   },
   {
     title: "Interior VIII",
-    image: "/gallery/interiors/interior-8.png",
+    image: "/gallery/interiors/interior-8.webp",
     category: "interiors",
   },
   {
     title: "Interior IX",
-    image: "/gallery/interiors/interior-9.png",
+    image: "/gallery/interiors/interior-9.webp",
     category: "interiors",
   },
   // Artworks
