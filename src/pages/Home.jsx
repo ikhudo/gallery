@@ -31,25 +31,25 @@ const Home = () => {
           <article className="bg-cream-50/20 border border-warm-300 p-5">
             <div className="frame group">
               <img
-                src="/gallery/Photo_2026-01-25_160909.jpg"
-                alt="Artwork I"
+                src="/gallery/interiors/interior-1.png"
+                alt="Interior I"
                 className="saturate-[0.3] group-hover:saturate-100 transition-[filter] duration-300"
               />
             </div>
             <h3 className="font-serif text-lg text-earth-800 mt-4 text-center">
-              Artwork I
+              Interior I
             </h3>
           </article>
           <article className="bg-cream-50/20 border border-warm-300 p-5">
             <div className="frame group">
               <img
-                src="/gallery/Photo_2026-01-25_160909_1.jpg"
-                alt="Artwork II"
+                src="/gallery/interiors/interior-2.png"
+                alt="Interior II"
                 className="saturate-[0.3] group-hover:saturate-100 transition-[filter] duration-300"
               />
             </div>
             <h3 className="font-serif text-lg text-earth-800 mt-4 text-center">
-              Artwork II
+              Interior II
             </h3>
           </article>
         </div>

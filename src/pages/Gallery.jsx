@@ -38,6 +38,43 @@ const galleryItems = [
     title: "Artwork IX",
     image: "/gallery/Photo_2026-01-25_160909_7.jpg",
   },
+  // Interiors
+  {
+    title: "Interior I",
+    image: "/gallery/interiors/interior-1.png",
+  },
+  {
+    title: "Interior II",
+    image: "/gallery/interiors/interior-2.png",
+  },
+  {
+    title: "Interior III",
+    image: "/gallery/interiors/interior-3.png",
+  },
+  {
+    title: "Interior IV",
+    image: "/gallery/interiors/interior-4.png",
+  },
+  {
+    title: "Interior V",
+    image: "/gallery/interiors/interior-5.png",
+  },
+  {
+    title: "Interior VI",
+    image: "/gallery/interiors/interior-6.png",
+  },
+  {
+    title: "Interior VII",
+    image: "/gallery/interiors/interior-7.png",
+  },
+  {
+    title: "Interior VIII",
+    image: "/gallery/interiors/interior-8.png",
+  },
+  {
+    title: "Interior IX",
+    image: "/gallery/interiors/interior-9.png",
+  },
 ];
 
 const Gallery = () => {
