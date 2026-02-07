@@ -43,13 +43,13 @@ const Home = () => {
           <article className="bg-cream-50/20 border border-warm-300 p-5">
             <div className="frame group">
               <img
-                src="/gallery/interiors/interior-2.webp"
-                alt="Interior II"
+                src="/gallery/interiors/interior-10.webp"
+                alt="Interior X"
                 className="saturate-[0.3] group-hover:saturate-100 transition-[filter] duration-300"
               />
             </div>
             <h3 className="font-serif text-lg text-earth-800 mt-4 text-center">
-              Interior II
+              Interior X
             </h3>
           </article>
         </div>

@@ -3,6 +3,13 @@ import { useState, useEffect } from "react";
 const galleryItems = [
   // Interiors
   {
+    title: "Interior X",
+    image: "/gallery/interiors/interior-10.webp",
+    category: "interiors",
+    description: "Raw textures and muted tones creating a restful retreat.",
+    story: "This piece was born from my love of quiet, lived-in spaces. I imagined a bedroom where the painting above the bed mirrors the softness of linen and the weathered warmth of natural materials—a place where art and rest become one.",
+  },
+  {
     title: "Interior I",
     image: "/gallery/interiors/interior-1.webp",
     category: "interiors",
