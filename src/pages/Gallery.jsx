@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
+import useSEO, { BASE_URL } from "../hooks/useSEO";
 
 const galleryItems = [
   // Interiors
@@ -208,7 +209,7 @@ const Modal = ({ item, onClose, onPrev, onNext, hasPrev, hasNext }) => {
             <div className="frame">
               <img
                 src={item.image}
-                alt={item.title}
+                alt={`${item.title} — ${item.description}`}
                 className="max-h-[60vh] w-auto object-contain"
               />
             </div>
@@ -252,6 +253,42 @@ const Gallery = () => {
       ? galleryItems
       : galleryItems.filter((item) => item.category === activeFilter);
 
+  const jsonLd = useMemo(
+    () => ({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: "Gallery — Interior Decoration Artworks & Paintings",
+      description:
+        "Complete collection of original interior decoration artworks and paintings for interior design by Oliwia Khudo.",
+      numberOfItems: galleryItems.length,
+      itemListElement: galleryItems.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "VisualArtwork",
+          name: item.title,
+          image: `${BASE_URL}${item.image}`,
+          description: item.description,
+          artform: "Painting",
+          creator: {
+            "@type": "Person",
+            name: "Oliwia Khudo",
+          },
+        },
+      })),
+    }),
+    [],
+  );
+
+  useSEO({
+    title: "Gallery — Interior Decoration Artworks & Paintings | Oliwka.art",
+    description:
+      "Browse original interior decoration artworks and paintings for interior design by Oliwia Khudo. Each piece tells a unique story through color, light, and emotion.",
+    canonical: `${BASE_URL}/gallery`,
+    ogImage: `${BASE_URL}/gallery/interiors/interior-10.webp`,
+    jsonLd,
+  });
+
   const handlePrev = () => {
     if (selectedIndex > 0) {
       setSelectedIndex(selectedIndex - 1);
@@ -270,8 +307,9 @@ const Gallery = () => {
         Gallery
       </h1>
       <p className="text-center max-w-xl mx-auto mb-6 text-earth-800 leading-relaxed">
-        Explore the complete collection of original artworks, each piece telling
-        its own unique story through color, light, and emotion.
+        Explore the complete collection of original interior decoration artworks
+        and paintings for interior design — each piece telling its own unique
+        story through color, light, and emotion.
       </p>
 
       <div className="flex justify-center gap-3 mb-10">
@@ -300,7 +338,7 @@ const Gallery = () => {
             <div className="frame group">
               <img
                 src={item.image}
-                alt={item.title}
+                alt={`${item.title} — ${item.description}`}
                 className="saturate-[0.3] group-hover:saturate-100 transition-[filter] duration-300"
               />
             </div>

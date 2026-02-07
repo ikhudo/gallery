@@ -1,6 +1,38 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import useSEO, { BASE_URL } from "../hooks/useSEO";
 
 const Contacts = () => {
+  const jsonLd = useMemo(
+    () => ({
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      name: "Contact Oliwia Khudo",
+      description:
+        "Commission custom interior decoration artworks or purchase original paintings by Oliwia Khudo, a young artist based in Kraków, Poland.",
+      url: `${BASE_URL}/contacts`,
+      mainEntity: {
+        "@type": "Person",
+        name: "Oliwia Khudo",
+        email: "info@oliwka.art",
+        jobTitle: "Visual Artist",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Kraków",
+          addressCountry: "PL",
+        },
+      },
+    }),
+    [],
+  );
+
+  useSEO({
+    title: "Contact — Commission Interior Decoration Artworks | Oliwka.art",
+    description:
+      "Commission custom interior decoration artworks or purchase original paintings for interior design by Oliwia Khudo. Young artist based in Kraków, Poland.",
+    canonical: `${BASE_URL}/contacts`,
+    ogImage: `${BASE_URL}/artist.webp`,
+    jsonLd,
+  });
   const user = "info";
   const domain = "oliwka.art";
 
