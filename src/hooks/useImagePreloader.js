@@ -10,6 +10,7 @@ const galleryImages = [
   "/gallery/Photo_2026-01-25_160909_6.jpg",
   "/gallery/Photo_2026-01-25_160909_7.jpg",
   "/gallery/Photo_2026-01-25_160909_8.jpg",
+  "/gallery/interiors/interior-10.webp",
   "/gallery/interiors/interior-1.webp",
   "/gallery/interiors/interior-2.webp",
   "/gallery/interiors/interior-3.webp",
