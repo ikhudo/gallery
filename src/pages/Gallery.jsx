@@ -194,7 +194,7 @@ const Modal = ({ item, onClose, onPrev, onNext, hasPrev, hasNext }) => {
       <ArrowButton direction="next" onClick={onNext} disabled={!hasNext} />
 
       <div
-        className="relative bg-gradient-to-br from-cream-100 to-cream-200 max-w-5xl w-full max-h-full md:max-h-[90vh] overflow-y-auto border-0 md:border border-warm-400 shadow-2xl mx-0 md:mx-16"
+        className="relative bg-gradient-to-br from-cream-100 to-cream-200 max-w-5xl w-full max-h-full md:max-h-[90vh] overflow-y-auto border-0 md:border border-warm-400 shadow-2xl mx-0 md:mx-16 pb-16 md:pb-0"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button — above image on mobile, overlaid on desktop */}
@@ -243,37 +243,37 @@ const Modal = ({ item, onClose, onPrev, onNext, hasPrev, hasNext }) => {
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Mobile bottom navigation arrows */}
-        <div
-          className="flex md:hidden justify-center gap-4 py-4 border-t border-warm-300"
-          onClick={(e) => e.stopPropagation()}
+      {/* Mobile bottom navigation arrows — fixed to screen bottom */}
+      <div
+        className="fixed bottom-0 left-0 right-0 z-50 flex md:hidden justify-center gap-4 py-3 bg-cream-100 border-t border-warm-300"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={onPrev}
+          disabled={!hasPrev}
+          className={`w-12 h-12 flex items-center justify-center border transition-all duration-200 ${
+            !hasPrev
+              ? "bg-cream-100/10 text-earth-600/40 border-warm-300/20 cursor-not-allowed"
+              : "bg-cream-50 text-earth-600 border-warm-400"
+          }`}
+          aria-label="Previous artwork"
         >
-          <button
-            onClick={onPrev}
-            disabled={!hasPrev}
-            className={`w-12 h-12 flex items-center justify-center border transition-all duration-200 ${
-              !hasPrev
-                ? "bg-cream-100/10 text-earth-600/40 border-warm-300/20 cursor-not-allowed"
-                : "bg-cream-50 text-earth-600 border-warm-400"
-            }`}
-            aria-label="Previous artwork"
-          >
-            <span className="text-xl text-earth-600">{"\u2039"}</span>
-          </button>
-          <button
-            onClick={onNext}
-            disabled={!hasNext}
-            className={`w-12 h-12 flex items-center justify-center border transition-all duration-200 ${
-              !hasNext
-                ? "bg-cream-100/10 text-earth-600/40 border-warm-300/20 cursor-not-allowed"
-                : "bg-cream-50 text-earth-600 border-warm-400"
-            }`}
-            aria-label="Next artwork"
-          >
-            <span className="text-xl text-earth-600">{"\u203a"}</span>
-          </button>
-        </div>
+          <span className="text-xl text-earth-600">{"\u2039"}</span>
+        </button>
+        <button
+          onClick={onNext}
+          disabled={!hasNext}
+          className={`w-12 h-12 flex items-center justify-center border transition-all duration-200 ${
+            !hasNext
+              ? "bg-cream-100/10 text-earth-600/40 border-warm-300/20 cursor-not-allowed"
+              : "bg-cream-50 text-earth-600 border-warm-400"
+          }`}
+          aria-label="Next artwork"
+        >
+          <span className="text-xl text-earth-600">{"\u203a"}</span>
+        </button>
       </div>
     </div>
   );
