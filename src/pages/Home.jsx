@@ -1,4 +1,37 @@
+import { useMemo } from "react";
+import useSEO, { BASE_URL } from "../hooks/useSEO";
+
 const Home = () => {
+  const jsonLd = useMemo(
+    () => ({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Oliwia Khudo",
+      url: BASE_URL,
+      image: `${BASE_URL}/artist.webp`,
+      jobTitle: "Visual Artist",
+      description:
+        "Young contemporary artist based in Kraków, Poland, specializing in interior decoration artworks and expressive abstract paintings.",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Kraków",
+        addressCountry: "PL",
+      },
+      sameAs: [],
+    }),
+    [],
+  );
+
+  useSEO({
+    title:
+      "Oliwia Khudo — Young Artist in Kraków | Interior Decoration Artworks",
+    description:
+      "Discover original paintings for interior design by Oliwia Khudo, a young contemporary artist based in Kraków. Bold colors, expressive brushwork, unique art for your space.",
+    canonical: BASE_URL + "/",
+    ogImage: `${BASE_URL}/artist.webp`,
+    jsonLd,
+  });
+
   return (
     <main className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-8 lg:gap-10 pt-8 items-end">
       {/* Artist Section */}
@@ -15,10 +48,12 @@ const Home = () => {
           Oliwia Khudo
         </h1>
         <p className="leading-relaxed max-w-sm text-md text-earth-800">
-          Oliwia Khudo is a young artist whose vibrant work spans abstractions,
-          nature-inspired pieces, and expressive compositions. With bold colors
-          and intuitive brushwork, each painting captures fleeting moments and
-          emotions, inviting viewers into her unique creative world.
+          Oliwia Khudo is a young artist based in Kraków whose vibrant work
+          spans interior decoration artworks, nature-inspired pieces, and
+          expressive abstract compositions. With bold colors and intuitive
+          brushwork, each painting captures fleeting moments and emotions —
+          creating unique paintings for interior design that invite viewers into
+          her creative world.
         </p>
       </section>
 

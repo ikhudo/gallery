@@ -1,12 +1,50 @@
-import { Routes, Route, Link, NavLink } from "react-router-dom";
+import { useMemo } from "react";
+import { Routes, Route, Link, NavLink, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Gallery from "./pages/Gallery";
 import Contacts from "./pages/Contacts";
 import useImagePreloader from "./hooks/useImagePreloader";
+import useSEO, { BASE_URL } from "./hooks/useSEO";
+
+const BREADCRUMB_MAP = {
+  "/": { name: "Home" },
+  "/gallery": { name: "Gallery" },
+  "/contacts": { name: "Contacts" },
+};
 
 const App = () => {
-  // Preload all gallery images on app mount
   useImagePreloader();
+
+  const { pathname } = useLocation();
+
+  const breadcrumbJsonLd = useMemo(() => {
+    const items = [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: BASE_URL + "/",
+      },
+    ];
+
+    const current = BREADCRUMB_MAP[pathname];
+    if (pathname !== "/" && current) {
+      items.push({
+        "@type": "ListItem",
+        position: 2,
+        name: current.name,
+        item: BASE_URL + pathname,
+      });
+    }
+
+    return {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: items,
+    };
+  }, [pathname]);
+
+  useSEO({ jsonLd: breadcrumbJsonLd });
 
   return (
     <div className="min-h-screen flex items-center justify-center py-8 px-4 md:py-12">
