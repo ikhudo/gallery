@@ -167,12 +167,12 @@ const Modal = ({ item, onClose, onPrev, onNext, hasPrev, hasNext }) => {
         onClick();
       }}
       disabled={disabled}
-      className={`absolute top-1/2 -translate-y-1/2 ${
-        direction === "prev" ? "left-2 md:left-4" : "right-2 md:right-4"
-      } z-10 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center border transition-all duration-200 ${
+      className={`z-10 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center border transition-all duration-200 ${
         disabled
           ? "bg-cream-100/10 text-earth-600/40 border-warm-300/20 cursor-not-allowed"
           : "bg-cream-50 text-earth-600 border-warm-400 hover:bg-warm-300/50 hover:border-warm-500"
+      } hidden md:flex md:absolute md:top-1/2 md:-translate-y-1/2 ${
+        direction === "prev" ? "md:left-4" : "md:right-4"
       }`}
       aria-label={direction === "prev" ? "Previous artwork" : "Next artwork"}
     >
@@ -184,33 +184,37 @@ const Modal = ({ item, onClose, onPrev, onNext, hasPrev, hasNext }) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center p-0 md:p-8"
       onClick={onClose}
     >
       <div className="absolute inset-0 bg-earth-900/80 backdrop-blur-sm" />
 
+      {/* Desktop side arrows */}
       <ArrowButton direction="prev" onClick={onPrev} disabled={!hasPrev} />
       <ArrowButton direction="next" onClick={onNext} disabled={!hasNext} />
 
       <div
-        className="relative bg-gradient-to-br from-cream-100 to-cream-200 max-w-5xl w-full max-h-[90vh] overflow-y-auto border border-warm-400 shadow-2xl mx-12 md:mx-16"
+        className="relative bg-gradient-to-br from-cream-100 to-cream-200 max-w-5xl w-full max-h-full md:max-h-[90vh] overflow-y-auto border-0 md:border border-warm-400 shadow-2xl mx-0 md:mx-16"
         onClick={(e) => e.stopPropagation()}
       >
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center text-earth-600 hover:text-earth-800 hover:bg-warm-300/50 transition-colors text-2xl"
-          aria-label="Close modal"
-        >
-          &times;
-        </button>
+        {/* Close button — above image on mobile, overlaid on desktop */}
+        <div className="flex justify-end p-2 md:p-0">
+          <button
+            onClick={onClose}
+            className="relative md:absolute md:top-4 md:right-4 z-10 w-10 h-10 flex items-center justify-center text-earth-600 hover:text-earth-800 hover:bg-warm-300/50 transition-colors text-2xl"
+            aria-label="Close modal"
+          >
+            &times;
+          </button>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2">
-          <div className="p-6 md:p-8 flex items-center justify-center bg-cream-50/50">
+          <div className="px-6 pb-4 md:p-8 flex items-center justify-center bg-cream-50/50">
             <div className="frame">
               <img
                 src={item.image}
                 alt={`${item.title} — ${item.description}`}
-                className="max-h-[60vh] w-auto object-contain"
+                className="max-h-[50vh] md:max-h-[60vh] w-auto object-contain"
               />
             </div>
           </div>
@@ -238,6 +242,37 @@ const Modal = ({ item, onClose, onPrev, onNext, hasPrev, hasNext }) => {
               </p>
             </div>
           </div>
+        </div>
+
+        {/* Mobile bottom navigation arrows */}
+        <div
+          className="flex md:hidden justify-center gap-4 py-4 border-t border-warm-300"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <button
+            onClick={onPrev}
+            disabled={!hasPrev}
+            className={`w-12 h-12 flex items-center justify-center border transition-all duration-200 ${
+              !hasPrev
+                ? "bg-cream-100/10 text-earth-600/40 border-warm-300/20 cursor-not-allowed"
+                : "bg-cream-50 text-earth-600 border-warm-400"
+            }`}
+            aria-label="Previous artwork"
+          >
+            <span className="text-xl text-earth-600">{"\u2039"}</span>
+          </button>
+          <button
+            onClick={onNext}
+            disabled={!hasNext}
+            className={`w-12 h-12 flex items-center justify-center border transition-all duration-200 ${
+              !hasNext
+                ? "bg-cream-100/10 text-earth-600/40 border-warm-300/20 cursor-not-allowed"
+                : "bg-cream-50 text-earth-600 border-warm-400"
+            }`}
+            aria-label="Next artwork"
+          >
+            <span className="text-xl text-earth-600">{"\u203a"}</span>
+          </button>
         </div>
       </div>
     </div>
