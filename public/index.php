@@ -5,8 +5,9 @@
 $request = $_SERVER['REQUEST_URI'];
 $path = parse_url($request, PHP_URL_PATH);
 
-// If the request is for an actual file or directory, let Apache serve it
-if ($path !== '/' && file_exists(__DIR__ . $path)) {
+// Only serve real files directly (not directories — /gallery is both
+// a SPA route and a real directory containing images)
+if ($path !== '/' && is_file(__DIR__ . $path)) {
     return false;
 }
 
