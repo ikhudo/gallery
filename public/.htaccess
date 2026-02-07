@@ -4,6 +4,10 @@
   RewriteEngine On
   RewriteBase /
 
+  # Prevent Apache from appending trailing slash to directories
+  # (e.g. /gallery → /gallery/) since they are SPA routes
+  DirectorySlash Off
+
   # Only skip rewriting for actual files (not directories!)
   # /gallery is both a SPA route and a real directory with images,
   # so we must NOT exclude directories from rewriting.
